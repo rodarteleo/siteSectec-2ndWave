@@ -1,0 +1,457 @@
+/* ==========================================================================
+   style.css - Arquivo de Estilização Principal para AuraPet
+   Objetivo: Definir a identidade visual (cores, fontes, espaçamento,
+   responsividade) da landing page.
+   ========================================================================== */
+
+/* 1. CONFIGURAÇÕES GERAIS E "RESET"
+   Aqui garantimos que a página comece "limpa", sem margens padrão dos
+   navegadores que podem atrapalhar o layout. */
+* {
+  margin: 0;
+  padding: 0;
+  /* Box-sizing: border-box é vital. Ele garante que padding e bordas
+     não "empurrem" o tamanho do elemento para fora, facilitando o cálculo
+     de layouts (Flexbox e Grid). */
+  box-sizing: border-box;
+}
+
+/* 2. TIPOGRAFIA E CORES BASE DO CORPO
+   Definimos a fonte principal para o texto e a cor de fundo padrão. */
+body {
+  /* Usamos uma fonte sans-serif limpa e moderna como 'Poppins'.
+     Certifique-se de que o link do Google Fonts no HTML aponta para ela. */
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff; /* Branco puro para clareza e espaço */
+  color: #1e293b; /* Um cinza muito escuro (quase preto) para o texto principal,
+                    melhorando a leitura do que preto puro. */
+  line-height: 1.6; /* Aumenta o espaçamento entre linhas para facilitar a leitura. */
+}
+
+/* 3. TÍTULOS (HEADINGS)
+   Definimos uma fonte diferente e cores mais fortes para os títulos,
+   criando uma hierarquia visual. */
+h1, h2, h3, h4 {
+  /* Uma fonte ligeiramente mais arredondada e amigável como 'Fredoka'. */
+  font-family: "Fredoka", sans-serif;
+  color: #1e3a8a; /* Um Azul Marinho Profundo, passando confiança. */
+  font-weight: 700;
+}
+
+h1 {
+  /* Título principal (Seção Hero) */
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  /* Títulos de seção (Sobre, Serviços, Contato) */
+  font-size: 36px;
+  text-align: center; /* Centraliza os títulos das seções. */
+  margin-bottom: 32px;
+}
+
+/* 4. ELEMENTOS UTILITÁRIOS
+   Classes que podemos reutilizar em qualquer lugar. */
+
+/* .container: O elemento mais importante de layout. Ele centraliza o conteúdo
+   em telas grandes e impede que o texto fique "esticado" de ponta a ponta,
+   o que dificulta a leitura. */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Largura máxima confortável para leitura. */
+  margin: 0 auto; /* Centraliza horizontalmente. */
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Classes de Cores Utilitárias */
+.text-lilac {
+  color: #a78bfa; /* Lilás Suave */
+}
+
+.text-purple {
+  color: #7c3aed; /* Roxo Vibrante */
+}
+
+/* ==========================================================================
+   COMPONENTES ESPECÍFICOS DA PÁGINA
+   Aqui estilizamos cada seção do HTML na ordem em que aparecem.
+   ========================================================================== */
+
+/* 5. CABEÇALHO (HEADER) */
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0; /* Uma linha sutil para separar o topo. */
+  padding: 16px 0;
+}
+
+/* .cabecalho: Alinha o logotipo e o menu usando Flexbox. */
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Empurra logo para esquerda e menu para direita. */
+}
+
+/* Estilo do Logotipo textual "AuraPet" */
+.logotipo {
+  font-family: "Fredoka", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #1e3a8a; /* Azul Marinho */
+}
+
+/* O "Pet" do logotipo com a cor Roxo Vibrante. */
+.logotipo-destaque {
+  color: #7c3aed;
+}
+
+/* .menu: Alinha os links de navegação. */
+.cabecalho .menu {
+  display: flex;
+  gap: 24px; /* Espaço entre os links. */
+}
+
+.cabecalho .menu a {
+  text-decoration: none; /* Remove o sublinhado padrão. */
+  color: #475569; /* Cinza médio para os links. */
+  font-weight: 500;
+  transition: color 0.3s ease; /* Efeito suave ao passar o mouse. */
+}
+
+/* Efeito Hover: Quando o usuário passa o mouse sobre o link. */
+.cabecalho .menu a:hover {
+  color: #7c3aed; /* Muda para Roxo Vibrante. */
+}
+
+/* Oculta o botão hambúrguer (menu móvel) por padrão. */
+.hamburguer {
+  display: none;
+}
+
+/* 6. SEÇÃO HERO (DESTAQUE)
+   A seção principal que o usuário vê ao carregar a página. */
+.hero {
+  /* Mudamos para um gradiente suave usando nossa nova paleta. */
+  background: linear-gradient(135deg, #f3f0ff 0%, #e0f2fe 100%);
+  color: #1e293b;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  /* position: relative; é necessário para o posicionamento absoluto da imagem. */
+  position: relative;
+  overflow: hidden; /* Garante que a imagem absoluta não crie barras de rolagem. */
+}
+
+.hero_conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px; /* Limita a largura do texto para não cobrir a imagem. */
+}
+
+.hero p {
+  font-size: 18px;
+  color: #475569;
+}
+
+/* .hero_acoes: Alinha os botões de ação. */
+.hero .hero_acoes {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Estilo Base dos Botões (CTAs) */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 50px; /* Bordas circulares como solicitado. */
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Botão Primário (Roxo Vibrante) */
+.btn-primary {
+  background-color: #7c3aed;
+  color: #ffffff;
+  border: 2px solid #7c3aed;
+}
+
+.btn-primary:hover {
+  background-color: #6d28d9; /* Roxo mais escuro no hover. */
+  border-color: #6d28d9;
+}
+
+/* Botão Secundário (Apenas borda Azul) */
+.btn-secondary {
+  background-color: transparent;
+  color: #1e3a8a;
+  border: 2px solid #1e3a8a;
+}
+
+.btn-secondary:hover {
+  background-color: #e0f2fe; /* Fundo azul muito claro no hover. */
+}
+
+/* .hero_imagem: Posiciona a imagem do pet de forma absoluta. */
+.hero_imagem img {
+  width: 450px;
+  /* position: absolute; remove a imagem do fluxo normal e a posiciona
+     em relação ao elemento pai que tem position: relative (.hero). */
+  position: absolute;
+  bottom: 0; /* Alinha no fundo da seção hero. */
+  right: 40px; /* Afasta 40px da borda direita. */
+  z-index: 1; /* Garante que a imagem fique sobre o fundo, mas sob o texto se cruzarem. */
+}
+
+/* Responsividade para a Seção Hero (Telas até 992px) */
+@media (max-width: 992px) {
+  .hero {
+    padding: 60px 0;
+  }
+  .hero_conteudo {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .hero_imagem img {
+    /* Em telas menores, a imagem absoluta cobriria o texto.
+       Mudamos para o fluxo normal e centralizamos. */
+    position: static;
+    display: block;
+    width: 300px;
+    margin: 40px auto 0 auto;
+  }
+}
+
+/* 7. SEÇÃO SOBRE NÓS */
+.sobre {
+  padding: 80px 0;
+}
+
+/* .sobre_info: Alinha o texto e a imagem em colunas usando Flexbox. */
+.sobre_info {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap; /* Permite quebrar em colunas no celular. */
+}
+
+.sobre_conteudo {
+  flex: 1; /* Ocupa metade da largura disponível. */
+  min-width: 300px;
+}
+
+.sobre_conteudo p {
+  margin-bottom: 16px;
+  color: #475569;
+}
+
+/* .sobre_imagem: Estiliza o contêiner da imagem "Sobre". */
+.sobre_imagem {
+  flex: 1; /* Ocupa a outra metade da largura. */
+  min-width: 300px;
+  border-radius: 20px;
+  overflow: hidden; /* Garante que a imagem respeite as bordas arredondadas. */
+  /* Vamos usar um gradiente sutil no fundo enquanto a imagem não carrega. */
+  background: linear-gradient(135deg, #e0f2fe 0%, #f3f0ff 100%);
+  padding: 20px; /* Cria um "recuo" para a imagem. */
+  display: flex;
+  justify-content: center;
+}
+
+.sobre_imagem img {
+  max-width: 100%; /* Garante que a imagem não transborde o contêiner. */
+  height: auto;
+  border-radius: 15px; /* Bordas arredondadas na própria imagem. */
+}
+
+/* Responsividade para a Seção Sobre (Celular) */
+@media (max-width: 768px) {
+  .sobre_info {
+    flex-direction: column; /* Empilha o texto sobre a imagem. */
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   8. SEÇÃO DE SERVIÇOS (TOTALMENTE NOVA)
+   Objetivo: Apresentar os serviços principais usando uma estrutura de cards
+   organizada com CSS Grid.
+   ========================================================================== */
+.servicos {
+  background-color: #f8fafc; /* Um cinza muito claro para diferenciar a seção. */
+  padding: 80px 0;
+}
+
+/* .servicos_grid: O elemento pai que define o layout em grade (CSS Grid). */
+.servicos_grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)):
+     Essa é a mágica da responsividade automática do Grid.
+     - 'auto-fit' cria quantas colunas couberem no espaço.
+     - 'minmax(280px, 1fr)' garante que cada card tenha no MÍNIMO 280px
+       e no MÁXIMO ocupe 1 fração (fr) do espaço disponível.
+       Se a tela encolher, o Grid automaticamente reduz o número de colunas
+       sem precisarmos de Media Queries! */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px; /* Espaço entre os cards. */
+  margin-top: 40px;
+}
+
+/* .servico_card: Estiliza cada card individual de serviço. */
+.servico_card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Efeito Hover nos Cards */
+.servico_card:hover {
+  transform: translateY(-5px); /* O card "levanta" ligeiramente. */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra suave. */
+}
+
+/* ==========================================================================
+   Ajuste Otimizado para Imagens de Serviço Personalizadas (Substituir no CSS)
+   ========================================================================== */
+
+/* .servico_icone: Transforma o círculo antigo numa moldura geométrica legível */
+.servico_icone {
+  width: 100%;
+  max-width: 160px;          /* Largura máxima equilibrada dentro do card */
+  height: 100px;             /* Altura ideal para o formato de imagem paisagem/retangular */
+  border-radius: 12px;       /* Cantos suavemente abaulados para harmonia visual */
+  background-color: #f8fafc; /* Fundo neutro sutil para destacar a imagem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  overflow: hidden;          /* Blindagem contra vazamentos de layout */
+  border: 1px solid #e2e8f0; /* Linha de contorno muito sutil */
+}
+
+/* Garante que a tua imagem apareça por inteiro, sem cortes ou deformações */
+.servico_icone img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* Preserva a proporção original de forma estrita */
+  padding: 8px;              /* Margem interna de segurança para leitura legível */
+}
+
+.servico_card h3 {
+  font-size: 20px;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+}
+
+.servico_card p {
+  color: #64748b; /* Cinza médio para descrição. */
+  font-size: 15px;
+}
+
+/* 9. SEÇÃO DE CONTATO */
+.contato {
+  background-color: #ffffff;
+  padding: 80px 0;
+}
+
+/* .contato_container: Alinha informações e formulário usando Flexbox. */
+.contato_container {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  margin-top: 40px;
+}
+
+.contato_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contato_info p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #475569;
+}
+
+/* Estilo dos Ícones SVG do contato. */
+.contato_info svg {
+  color: #7c3aed; /* Roxo Vibrante nos ícones. */
+  width: 24px;
+  height: 24px;
+}
+
+/* .contato_formulario: Estiliza o contêiner do formulário. */
+.contato_formulario {
+  flex: 1.2; /* Ocupa um pouco mais de espaço que as info. */
+  background-color: #f8fafc;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo dos campos de entrada (Inputs e Textarea) */
+.contato_formulario input,
+.contato_formulario textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #1e293b;
+  transition: border-color 0.3s ease;
+}
+
+/* Efeito ao clicar no campo (Focus) */
+.contato_formulario input:focus,
+.contato_formulario textarea:focus {
+  outline: none; /* Remove a borda padrão do navegador. */
+  border-color: #a78bfa; /* Borda fica Lilás Suave. */
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2); /* Sombra suave Lilás. */
+}
+
+/* Estilo do Botão de Enviar (usando a classe .btn-primary) */
+.contato_formulario button {
+  border: none;
+  width: 100%; /* Botão ocupa toda a largura do form. */
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Responsividade para a Seção de Contato (Celular) */
+@media (max-width: 768px) {
+  .contato_container {
+    flex-direction: column; /* Empilha info sobre formulário no celular. */
+  }
+}
+
+/* 10. RODAPÉ (FOOTER) */
+footer {
+  background-color: #1e3a8a; /* Azul Marinho Profundo. */
+  color: #ffffff;
+  padding: 32px 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 14px;
+  opacity: 0.8; /* Torna o texto do rodapé ligeiramente mais suave. */
+}
